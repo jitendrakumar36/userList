@@ -1,0 +1,18 @@
+.page-item.active{
+background-color: #72b4c8;
+}
+.page-item.active a{color:#fff}
+.page-item{border-radius: 0.2rem;
+    background-color: rgb(204, 204, 204);
+    min-width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.page-item a{
+    text-decoration: none;
+    min-width: 2rem;
+    text-align: center;
+    color:"#000"
+}
