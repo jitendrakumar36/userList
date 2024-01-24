@@ -6,20 +6,24 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import CloseIcon from '@mui/icons-material/Close';
 import User from './User.json';
 import { Link } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
 import './style.css'
 
 const Home = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [search, setSearch] = useState('')
+    console.log(search)
 
     const [currentPage, setCurrentPage] = useState(1);
-    const recordsPerPage = 6;
+    const recordsPerPage = 100;
     const lastIndex = currentPage * recordsPerPage;
     const firstIndex = lastIndex - recordsPerPage;
     const records = User.slice(firstIndex, lastIndex);
     const npage = Math.ceil(User.length / recordsPerPage);
     const numbers = [...Array(npage + 1).keys()].slice(1);
+    let total = User.length;
 
     const prePage = () => {
         if (currentPage !== 1) {
@@ -50,7 +54,7 @@ const Home = () => {
         { key: 3, text: 75, value: 75 }, { key: 4, text: 100, value: 100 },
     ];
     return (
-        <div>
+        <Box>
             <Container>
                 <Modal
                     open={open}
@@ -69,8 +73,50 @@ const Home = () => {
                     </Box>
                 </Modal>
                 <Grid container spacing={2}>
+                    <Grid item xs={4}>
+                        <Box style={{ display: "flex" }}>
+                            <Typography variant='h6'>Records :</Typography>
+                            <Typography variant='h5' style={{ fontWeight: "700" }}> {total}</Typography>
+                            <Box Component="form" style={{ marginLeft: "0.5rem" }}>
+                                <TextField
+                                    label="Search"
+                                    id="filled-size-small"
+                                    size="small"
+                                    onChange={(e) => setSearch(e.target.value)}
+                                />
+                            </Box>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <nav>
+                            <ul className='pagination' style={{ marginTop: "0" }}>
+                                <li>
+                                    <Button onClick={prePage} variant='contained'> Prev</Button>
+                                </li>
+                                {
+                                    numbers.map((n, i) => {
+                                        return (
+                                            <li key={i} className={`page-item ${currentPage === n ? "active" : ""}`}>
+                                                <Link to="#" onClick={() => changePage(n)}> {n}</Link>
+                                            </li>
+                                        )
+                                    })
+                                }
+                                <li>
+                                    <Button onClick={nextPage} variant='contained'> Next</Button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography variant='h6'>100 Records</Typography>
+                    </Grid>
+                </Grid>
+                <Grid container spacing={2}>
                     {
-                        records.map((item, i) => {
+                        records.filter((item) => {
+                            return (search.toLocaleLowerCase() === '' ? item : item.first_name.toLocaleLowerCase().includes(search))
+                        }).map((item, i) => {
                             return (
                                 <Grid item xs={4} key={i}>
                                     <Card>
@@ -121,9 +167,9 @@ const Home = () => {
                         }
                         )
                     }
-                </Grid>              
+                </Grid>
                 <nav>
-                    <ul style={{ display: "flex", justifyContent: "center", listStyle: "none" }}>
+                    <ul className='pagination'>
                         <li>
                             <Button onClick={prePage} variant='contained'> Prev</Button>
                         </li>
@@ -142,7 +188,7 @@ const Home = () => {
                     </ul>
                 </nav>
             </Container>
-        </div>
+        </Box>
     )
 }
 

@@ -16,3 +16,8 @@ background-color: #72b4c8;
     text-align: center;
     color:"#000"
 }
+.pagination{
+    display: flex; justify-content: center; list-style:none;
+}
+.pagination li:first-child{margin-right: 1rem;}
+.pagination li:last-child{margin-left: 1rem;}
