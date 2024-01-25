@@ -1,5 +1,5 @@
 .page-item.active{
-background-color: #72b4c8;
+background-color: #1976d2;
 }
 .page-item.active a{color:#fff}
 .page-item{border-radius: 0.2rem;
@@ -8,16 +8,25 @@ background-color: #72b4c8;
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: 2rem;
+    border-radius: 2rem;
+    margin:0.1rem;
     
 }
 .page-item a{
     text-decoration: none;
     min-width: 2rem;
     text-align: center;
-    color:"#000"
+    color:#000;
 }
 .pagination{
     display: flex; justify-content: center; list-style:none;
 }
 .pagination li:first-child{margin-right: 1rem;}
 .pagination li:last-child{margin-left: 1rem;}
+
+
+
+
+
+

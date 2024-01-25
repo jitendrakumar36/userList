@@ -1,5 +1,5 @@
 import  "../App.css";
-import { Container, Grid, Stack } from '@mui/material'
+import { Container, Grid, Stack, Box } from '@mui/material'
 import React from 'react'
 import { Outlet, NavLink } from 'react-router-dom';
 import WebLogo from '../assets/web-logo.png';
@@ -8,9 +8,9 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Header = () => {
     return (
-        <div style={{ padding: "0" }}>
+        <Box style={{ padding: "0" }}>
             <header style={{minHeight:"100vh"}}>
-                <div style={{backgroundColor:"#ffbfbf", marginBottom:"1rem"}}>
+                <Box style={{backgroundColor:"#ffbfbf", marginBottom:"1rem"}}>
                     <Container>
                         <Grid container>
                             <Grid item xs={2} style={style.logoSty}>
@@ -25,7 +25,7 @@ const Header = () => {
                                     </ul>
                                 </nav>
                             </Grid>
-                            <Grid item xs={2} style={{display:"flex"}}>
+                            <Grid item xs={2} style={{display:"flex", justifyContent:"flex-end"}}>
                                 <Stack direction="row" spacing={3} 
                                 style={{justifyContent:"center", alignItems:"center"}}>                                
                                     <FacebookIcon color="primary" />
@@ -34,10 +34,10 @@ const Header = () => {
                             </Grid>
                         </Grid>
                     </Container>
-                </div>
+                </Box>
                 <Outlet />
             </header>
-        </div>
+        </Box>
     )
 }
 
