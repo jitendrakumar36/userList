@@ -5,7 +5,6 @@ import {
 import React, { useState } from 'react'
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import CloseIcon from '@mui/icons-material/Close';
 import User from './User.json';
 import { Link } from 'react-router-dom';
@@ -59,7 +58,6 @@ const Home = () => {
         p: 4,
     }
 
-    console.log("state data", records)
     return (
         <Box>
             <Container>
@@ -130,7 +128,6 @@ const Home = () => {
                                 <MenuItem value={100}>100</MenuItem>
                                 <MenuItem value={200}>200</MenuItem>
                                 <MenuItem value={300}>300</MenuItem>
-                                {/* <MenuItem value={500}>500</MenuItem> */}
                             </Select>
                         </FormControl>
                     </Grid>
